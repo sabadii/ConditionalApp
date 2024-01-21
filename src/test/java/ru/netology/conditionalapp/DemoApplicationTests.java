@@ -34,14 +34,14 @@ class DemoApplicationTests {
 
     @Test
     void testDevApp() {
-        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:" + devContainer.getMappedPort(8080), String.class);
-        assertEquals("ExpectedDevResponse", forEntity.getBody());
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:" + devContainer.getMappedPort(8080) + "/profile", String.class);
+        assertEquals("Current profile is dev", forEntity.getBody());
     }
 
     @Test
     void testProdApp() {
-        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:" + prodContainer.getMappedPort(8081), String.class);
-        assertEquals("ExpectedProdResponse", forEntity.getBody());
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:" + prodContainer.getMappedPort(8081) + "/profile", String.class);
+        assertEquals("Current profile is production", forEntity.getBody());
     }
 
 }
